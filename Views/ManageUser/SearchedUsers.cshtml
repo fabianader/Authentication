@@ -1,0 +1,39 @@
+﻿@model List<IdentityProject.Models.ManageUserVM.UsersListVM>
+@{
+	ViewData["Title"] = "Search Users";
+}
+
+
+<partial name="_SearchPartial"></partial>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">UserName</th>
+			<th scope="col">Email</th>
+			<th scope="col">PhoneNumber</th>
+			<th scope="col">Links</th>
+		</tr>
+	</thead>
+	<tbody>
+	@foreach (var user in Model)
+	{
+		<tr>
+			<th scope="row">@user.UserId</th>
+			<td>@user.UserName</td>
+			<td>@user.Email</td>
+			<td>@user.PhoneNumber</td>
+			<td>
+				<form asp-controller="ManageUser" asp-action="DeleteUser" asp-antiforgery="true" asp-route-id="@user.UserId" method="post">
+
+					<a asp-controller="ManageUser" asp-action="EditUser" asp-route-id="@user.UserId"
+						class="btn btn-primary">Edit</a>
+
+					<button type="submit" class="btn btn-danger">Delete User</button>
+				</form>
+			</td>
+		</tr>
+	}
+	</tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model IdentityProject.Models.ViewModels.EmailCodeVM
+@{
+    ViewData["Title"] = "Email Code";
+}
+<center>
+    <h1>Email Code</h1>
+
+    <hr class="col-md-6" />
+
+    <div class="row">
+        <center>
+            <div class="col-md-5">
+                <form asp-action="EmailCode" asp-antiforgery="true" method="post">
+                    <input type="hidden" asp-for="UserName"/>
+                    <input type="hidden" asp-for="Token"/>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div> @* attention!! *@
+                    <div class="form-group">
+                        <label asp-for="Code" class="control-label"></label>
+                        <input asp-for="Code" class="form-control" />
+                        <span asp-validation-for="Code" class="text-danger"></span>
+                    </div><br />
+
+                    <div class="form-group">
+                        <button type="submit" value="Register" class="btn btn-success">Register</button>
+                    </div>
+                </form>
+            </div>
+        </center>
+    </div>
+</center>
+<div>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

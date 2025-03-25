@@ -1,0 +1,77 @@
+﻿@model IdentityProject.Models.ViewModels.LoginVM
+@{
+    ViewData["Title"] = "Log In";
+    var ReturnUrl = ViewBag.ReturnUrl as string;
+}
+<center>
+    <h1>Log In</h1>
+
+    <hr class="col-md-6" />
+
+    <div class="row">
+        <center>
+            <div class="col-md-5">
+                <form asp-action="Login" asp-antiforgery="true" method="post" asp-route-returnUrl="@ReturnUrl">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div><br />
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div><br />
+                    <div class="form-group">
+                        <label asp-for="RememberMe" class="control-label"></label>
+                        <input asp-for="RememberMe" class="form-check" />
+                        <span asp-validation-for="RememberMe" class="text-danger"></span>
+                    </div><br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </center>
+    </div>
+</center>
+<br />
+<div class="row mb-3">
+    <div class="col-md-12 text-center">
+        <h5 class="m-b-18" style="font-size: 16px">ورود با سرویس های خارجی :</h5>
+        @{
+            if (Model.ExternalLogins == null || !Model.ExternalLogins.Any())
+            {
+                <div class=text-danger>در حال حاضر امکان ورود با سرویس های خارجی وجود ندارد</div>
+            }
+            else
+            {
+                <form method="post" asp-controller="Auth" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" value="@provider.Name" 
+                                    class="btn btn-primary" name="provider" 
+                                    title="ورود با @provider.DisplayName ">
+                                @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Auth" asp-action="ForgotPassword">Forgot Your Password?</a><br />
+    <a asp-controller="Home" asp-action="Index">Back To Home</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

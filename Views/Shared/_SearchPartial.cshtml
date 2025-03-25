@@ -1,0 +1,8 @@
+﻿@using IdentityProject.Models.AppCustomEntities
+<div class="col-md-3">
+	<form asp-controller="ManageUser" asp-action="SearchUsers" asp-antiforgery="true" method="post">
+		<label class="control-label"></label>
+		<input class="form-control" type="text" placeholder="Search By User Name:" name="SearchedUserName"/><br />
+		<button class="btn btn-success" type="submit">Search</button>
+	</form>
+</div>
