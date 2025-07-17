@@ -83,14 +83,14 @@ This system enables user registration, login, password reset via email confirmat
 
 #### Setup
 1. Clone the repository:
-  - `git clone https://github.com/your-username/IdentityProject.git`
-  - `cd IdentityProject`
+    - `git clone https://github.com/your-username/IdentityProject.git`
+    - `cd IdentityProject`
 
 2. Update the database:
-  - `dotnet ef database update`
+    - `dotnet ef database update`
 
 3. Run the app:
-  - `dotnet run`
+    - `dotnet run`
 Or use `F5` in Visual Studio.
 
 # 📧 Email Functionality
