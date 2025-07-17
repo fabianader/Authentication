@@ -72,8 +72,8 @@ This system enables user registration, login, password reset via email confirmat
 ├── Tools/                   # Custom validation/tools
 ├── wwwroot/                 # Static files (CSS, JS, lib)
 ├── Program.cs               # App entry point
-└── appsettings.json         # Configurations```
-
+└── appsettings.json         # Configurations
+```
 
 # Getting Started
 #### Prerequisites
