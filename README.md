@@ -51,7 +51,8 @@ This system enables user registration, login, password reset via email confirmat
 |Razor View Engine         |	Dynamic server-side rendering  |
 
 # 📁 Project Structure
-```├── Controllers/
+```
+├── Controllers/
 │   ├── Auth.cs              # Login/Register/ForgotPassword
 │   ├── ManageUserController.cs
 │   ├── ManageRoleController.cs
